@@ -13,8 +13,8 @@ class ViewController: UIViewController {
    
     let eggTimes: [String: Int] = ["Soft": 300, "Medium": 420, "Hard": 720]
     
-    @IBOutlet var timeStatus: UILabel!
     
+    @IBOutlet var topLabel: UILabel!
     var timer: Timer?
 
     override func viewDidLoad() {
@@ -31,21 +31,12 @@ class ViewController: UIViewController {
        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
            guard let self = self else { return }
            if secondsRemaining > 0 {
-               if(secondsRemaining > 600 && secondsRemaining % 60 > 9){
-                   timeStatus.text = "\(secondsRemaining / 60): \(secondsRemaining % 60)"
-               } else if (secondsRemaining < 600 && secondsRemaining % 60 < 10){
-                   timeStatus.text = "0\(secondsRemaining / 60): 0\(secondsRemaining % 60)"
-               } else if (secondsRemaining > 600 && secondsRemaining % 60 < 10){
-                   timeStatus.text = "\(secondsRemaining / 60): 0\(secondsRemaining % 60)"
-               } else {
-                   timeStatus.text = "0\(secondsRemaining / 60): \(secondsRemaining % 60)"
-               }
-               
                print("\(secondsRemaining) seconds remaining")
                secondsRemaining -= 1
            } else {
                self.timer?.invalidate()
                print("Timer completed")
+               topLabel.text = "Done!"
                stopTimer()
            }
            }
