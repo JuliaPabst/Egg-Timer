@@ -11,12 +11,14 @@ import Foundation
 class ViewController: UIViewController {
     
    
-    let eggTimes: [String: Int] = ["Soft": 300, "Medium": 420, "Hard": 720]
+    let eggTimes: [String: Float] = ["Soft": 200, "Medium": 420, "Hard": 720]
     
     
     @IBOutlet var topLabel: UILabel!
     var timer: Timer?
 
+    @IBOutlet var progressBar: UIProgressView!
+    
     override func viewDidLoad() {
        super.viewDidLoad()
     }
@@ -26,12 +28,13 @@ class ViewController: UIViewController {
         timer = nil
     }
 
-    func startTimer(time: Int) {
-        var secondsRemaining = time
+    func startTimer(totalTime: Float) {
+        var secondsRemaining = totalTime
        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
            guard let self = self else { return }
            if secondsRemaining > 0 {
                print("\(secondsRemaining) seconds remaining")
+               progressBar.progress = 1 - secondsRemaining / totalTime
                secondsRemaining -= 1
            } else {
                self.timer?.invalidate()
@@ -46,17 +49,19 @@ class ViewController: UIViewController {
 
     @IBAction func hardnessSelected(_ sender: UIButton) {
         
+   
+        
         if(sender.tag == 0){
             stopTimer()
-            startTimer(time: eggTimes["Soft"]!)
+            startTimer(totalTime: eggTimes["Soft"]!)
             print(eggTimes["Soft"]!)
         } else if(sender.tag == 1){
             stopTimer()
-            startTimer(time: eggTimes["Medium"]!)
+            startTimer(totalTime: eggTimes["Medium"]!)
             print(eggTimes["Medium"]!)
         } else {
             stopTimer()
-            startTimer(time: eggTimes["Hard"]!)
+            startTimer(totalTime: eggTimes["Hard"]!)
             print(eggTimes["Hard"]!)
         }
         

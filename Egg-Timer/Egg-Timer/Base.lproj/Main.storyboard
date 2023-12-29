@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -122,15 +123,20 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DfV-av-Yc2" userLabel="Bottom">
                                         <rect key="frame" x="0.0" y="568" width="373" height="284"/>
                                         <subviews>
-                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="a7v-6v-aHk">
-                                                <rect key="frame" x="50" y="50" width="273" height="4"/>
+                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="a7v-6v-aHk">
+                                                <rect key="frame" x="20" y="100" width="333" height="6"/>
                                                 <color key="tintColor" red="0.55904483800000004" green="0.1616097987" blue="0.14507460589999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="5" id="qyH-OA-0eV"/>
+                                                </constraints>
+                                                <color key="progressTintColor" systemColor="systemGreenColor"/>
+                                                <color key="trackTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </progressView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="a7v-6v-aHk" secondAttribute="trailing" constant="50" id="9eO-rf-bxE"/>
-                                            <constraint firstItem="a7v-6v-aHk" firstAttribute="top" secondItem="DfV-av-Yc2" secondAttribute="top" constant="50" id="Lxo-zG-Mmh"/>
-                                            <constraint firstItem="a7v-6v-aHk" firstAttribute="leading" secondItem="DfV-av-Yc2" secondAttribute="leading" constant="50" id="vsn-6d-1rQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="a7v-6v-aHk" secondAttribute="trailing" constant="20" id="9eO-rf-bxE"/>
+                                            <constraint firstItem="a7v-6v-aHk" firstAttribute="top" secondItem="DfV-av-Yc2" secondAttribute="top" constant="100" id="Lxo-zG-Mmh"/>
+                                            <constraint firstItem="a7v-6v-aHk" firstAttribute="leading" secondItem="DfV-av-Yc2" secondAttribute="leading" constant="20" id="vsn-6d-1rQ"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -155,6 +161,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="progressBar" destination="a7v-6v-aHk" id="Jgj-UE-tVz"/>
                         <outlet property="topLabel" destination="D3A-T3-Umg" id="Gc8-Iq-nom"/>
                     </connections>
                 </viewController>
@@ -167,5 +174,8 @@
         <image name="hard_egg" width="287.66665649414062" height="366.33334350585938"/>
         <image name="medium_egg" width="288" height="363.33334350585938"/>
         <image name="soft_egg" width="287" height="365.33334350585938"/>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
